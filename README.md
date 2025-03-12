@@ -1,2 +1,4 @@
 # socket-js
-nodejs + reactjs
+
+BE: npm run dev
+FE npm start
