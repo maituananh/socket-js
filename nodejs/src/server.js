@@ -19,8 +19,18 @@ const io = new Server(server, {
 io.on('connection', (socket) => {
   console.log(`connected ${socket.id}`);
   
-  socket.emit('test-id', {
-    message: 'boos lao'
+  let counter = 0
+
+  setInterval(() => {
+    counter ++;
+    socket.emit('test-id', {
+      message: `send messge ${counter}`
+    })
+  }, 2000);
+  
+
+  socket.on('test-id', (data) => {
+    console.log(data.message);
   })
 
   socket.on('disconnect', () => { 
