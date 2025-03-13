@@ -2,7 +2,7 @@ import { createServer } from 'node:http';
 import { Server } from 'socket.io';
 
 const hostname = '127.0.0.1';
-const port = 3000;
+const port = 8080;
 
 const server = createServer((req, res) => {
   res.statusCode = 200;
@@ -10,12 +10,20 @@ const server = createServer((req, res) => {
   res.end('Hello World');
 });
 
-const io = new Server(server)
+const io = new Server(server, {
+  cors: {
+    origin: 'http://localhost:3000'
+  }
+})
 
 io.on('connection', (socket) => {
-  console.log(socket.id);
+  console.log(`connected ${socket.id}`);
   
-  socket.on('disconnect', () => {
+  socket.emit('test-id', {
+    message: 'boos lao'
+  })
+
+  socket.on('disconnect', () => { 
     console.log(`disconnected ${socket.id}`);
   })
 })
