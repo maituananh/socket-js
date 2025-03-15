@@ -21,12 +21,12 @@ io.on('connection', (socket) => {
   
   let counter = 0
 
-  setInterval(() => {
-    counter ++;
-    socket.emit('test-id', {
-      message: `send messge ${counter}`
-    })
-  }, 2000);
+  // setInterval(() => {
+  //   counter ++;
+  //   socket.emit('test-id', {
+  //     message: `send messge ${counter}`
+  //   })
+  // }, 2000);
   
 
   socket.on('test-id', (data) => {
