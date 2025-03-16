@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './Contact.module.css';
-import '../../index.css';
+import './index.css';
 
 export default function Contact() {
     return (
